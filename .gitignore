@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+dist/
+.build/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite cache
+.vite/
+vite.config.ts
+
+# Firebase emulators (optional if you're not using local emulators)
+firebase-debug.log
+firestore-debug.log
+.emulator/
+.firebase/
+
+# Environment variables
+.env
+.env.*  # includes .env.local, .env.production, etc.
+vite.env  # if you're using vite.env instead of .env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+.history/
+
+# Vercel
+.vercel/
+
+# Build output (if exported manually for hosting)
+out/
