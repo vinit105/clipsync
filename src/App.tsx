@@ -35,8 +35,8 @@ function App() {
   <div className="ml-8   flex-1 overflow-hidden">
     <Routes>
       <Route path="/login" element={<Login />} />
-
-      <Route path="*" element={<Login />} />
+      user != null? ( <Route path="*" element={<Dashboard />} />):
+(      <Route path="*" element={<Login />} />)
       <Route
         path="/dashboard"
         element={
