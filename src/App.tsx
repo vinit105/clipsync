@@ -1,6 +1,6 @@
 // src/App.tsx
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 
 import VerticalNavbar from './components/Navbar'
 import type { User } from 'firebase/auth'
@@ -30,28 +30,33 @@ function App() {
   return (
     <>
       <Router>
-         <div className="flex h-screen">
-  <VerticalNavbar User={user} />
-  <div className="ml-8   flex-1 overflow-hidden">
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      user != null? ( <Route path="*" element={<Dashboard />} />):
-(      <Route path="*" element={<Login />} />)
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute user={user}>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route path="/about" element={<About />} />
-    </Routes>
-  </div>
-</div>
+        <div className="flex h-screen">
+          <VerticalNavbar User={user} />
+          <div className="ml-8 flex-1 overflow-hidden">
+            <Routes>
+              {/* Always accessible */}
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
 
-</Router>
+              {/* Protected Dashboard Route */}
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute user={user}>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
 
+              {/* Catch-all route (redirect to dashboard or login based on auth) */}
+              <Route
+                path="*"
+                element={<Navigate to={user ? '/dashboard' : '/login'} replace />}
+              />
+            </Routes>
+          </div>
+        </div>
+      </Router>
 
       <Toaster />
     </>
