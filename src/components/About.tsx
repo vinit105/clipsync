@@ -30,7 +30,7 @@ const About = () => {
           </a>
 
           <a
-            href="https://github.com/your-repo"
+            href="https://github.com/vinit105/clipsync_view"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded bg-gray-800 text-white hover:bg-gray-900 transition"
